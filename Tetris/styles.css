@@ -35,3 +35,6 @@ body {
   height: 1.5rem;
   outline: 1px solid #ccc;
 }
+.tree {
+  background: #67c23a;
+}
