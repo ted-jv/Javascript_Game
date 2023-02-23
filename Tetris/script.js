@@ -75,7 +75,6 @@ function renderBlocks() {
       setTimeout(() => {
         renderBlocks();
       }, 0);
-      //   setTi
     }
   });
   movingItem.left = left;
