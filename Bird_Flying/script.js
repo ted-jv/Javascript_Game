@@ -11,14 +11,14 @@ document.addEventListener('keyup', pressOff);
 let keys = {};
 let bird = document.createElement('div'); //! 요소 생성
 let wing = document.createElement('div');
+// Player 좌표
 let player = {
   x: 0,
   y: 0,
-  speed: 2,
+  speed: 5,
 };
 
 function start() {
-  console.info('abc');
   startBtn.classList.add('hide');
   gameMessage.classList.add('hide');
   bird.setAttribute('class', 'bird'); //! 생성된 요소에 속성 주입
@@ -29,32 +29,34 @@ function start() {
   player.y = bird.offsetTop;
   window.requestAnimationFrame(playGame);
 }
+
 function playGame() {
-  if (keys.ArrowLeft) {
+  if (keys.ArrowLeft && player.x > 0) {
     player.x -= player.speed;
   }
-  if (keys.ArrowRight) {
+  if (keys.ArrowRight && player.x < gameArea.offsetWidth - bird.offsetWidth) {
     player.x += player.speed;
   }
-  if (keys.ArrowUp) {
+  if (keys.ArrowUp && player.y > 0) {
     player.y -= player.speed;
   }
-  if (keys.ArrowDown) {
+  if (keys.ArrowDown && player.y < gameArea.offsetHeight - bird.offsetHeight) {
     player.y += player.speed;
   }
   bird.style.left = player.x + 'px';
   bird.style.top = player.y + 'px';
   window.requestAnimationFrame(playGame);
 }
+
 function pressOn(e) {
-  console.info('press on');
+  // console.info('press on');
   keys[e.code] = true;
-  console.info(keys);
+  // console.info(keys);
 }
 
 function pressOff(e) {
-  console.info('press Down');
+  // console.info('press Down');
   keys[e.code] = false;
   delete keys[e.code];
-  console.info(keys);
+  // console.info(keys);
 }
